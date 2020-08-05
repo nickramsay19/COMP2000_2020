@@ -75,11 +75,10 @@ public class Main extends JFrame {
         public void paint(Graphics g){
             // Try to get mouse position
             Point mousePosition;
-            try{
+            if(getMousePosition() == null){
+                mousePosition = new Point(-1, -1);
+            } else {
                 mousePosition = getMousePosition();
-            } catch (Exception err){
-                // Mouse outside bounds of screen -> Ignore
-                mousePosition = new Point(500, 500);
             }
             
             grid.paint(g, mousePosition);
